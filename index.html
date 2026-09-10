@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÔHöYöFOU — Ensemble, construisons un avenir meilleur</title>
+<meta name="description" content="ÔHöYöFOU est une ONG engagée pour l'humanité, la solidarité et l'espoir. Découvrez notre mission, nos actions et notre impact auprès des communautés.">
+<style>
+:root {
+    --terre: #C1440E;
+    --terre-clair: #E86A33;
+    --ocre: #E9B44C;
+    --sable: #F9F4EF;
+    --vert: #2A9D8F;
+    --nuit: #1A2238;
+    --gris: #6B6B6B;
+    --blanc: #FFFFFF;
+    --radius: 24px;
+    --shadow: 0 20px 50px rgba(26,34,56,0.10);
+    --trans: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--nuit);
+    background: var(--sable);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+section { padding: 110px 0; position: relative; }
+
+.section-tag {
+    display: inline-block;
+    font-family: system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terre);
+    background: rgba(193,68,14,0.08);
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 20px;
+    color: var(--nuit);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gris);
+    max-width: 620px;
+    margin-bottom: 50px;
+}
+
+.center { text-align: center; }
+.center .section-subtitle { margin-left: auto; margin-right: auto; }
+
+/* BUTTONS */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 15px 32px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s var(--trans);
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary {
+    background: var(--terre);
+    color: var(--blanc);
+    box-shadow: 0 10px 30px rgba(193,68,14,0.35);
+}
+.btn-primary:hover {
+    background: var(--terre-clair);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(193,68,14,0.45);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--nuit);
+    border: 2px solid rgba(26,34,56,0.2);
+}
+.btn-outline:hover {
+    border-color: var(--nuit);
+    background: var(--nuit);
+    color: var(--blanc);
+    transform: translateY(-3px);
+}
+.btn-light {
+    background: rgba(255,255,255,0.15);
+    color: var(--blanc);
+    border: 2px solid rgba(255,255,255,0.4);
+    backdrop-filter: blur(6px);
+}
+.btn-light:hover {
+    background: var(--blanc);
+    color: var(--nuit);
+    transform: translateY(-3px);
+}
+
+/* NAVBAR */
+header {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    padding: 22px 0;
+}
+header.scrolled {
+    background: rgba(249,244,239,0.92);
+    backdrop-filter: blur(14px);
+    padding: 14px 0;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--blanc);
+    letter-spacing: 1px;
+    transition: color 0.4s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--ocre);
+    display: inline-block;
+}
+header.scrolled .logo { color: var(--nuit); }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+.nav-links a {
+    font-family: system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--blanc);
+    position: relative;
+    transition: color 0.3s;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 0; height: 2px;
+    background: var(--ocre);
+    transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+header.scrolled .nav-links a { color: var(--nuit); }
+
+.nav-cta { margin-left: 10px; }
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none; border: none;
+    z-index: 1001;
+}
+.burger span {
+    width: 26px; height: 3px;
+    background: var(--blanc);
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+header.scrolled .burger span { background: var(--nuit); }
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 0 80px;
+    background:
+        linear-gradient(120deg, rgba(15, 47, 2, 0.85) 0%, rgba(2, 5, 4, 0.55) 100%),
+        url('img/FC5A32A8-56BF-418C-BBAF-F6D898CE8024.PNG') center/cover;
+}
+.hero-content { max-width: 780px; color: var(--blanc); }
+.hero h1 {
+    font-size: clamp(3rem, 9vw, 6rem);
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: var(--ocre);
+    margin-bottom: 28px;
+}
+.hero p {
+    font-size: 1.15rem;
+    max-width: 560px;
+    margin-bottom: 40px;
+    opacity: 0.95;
+}
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.hero-scroll {
+    position: absolute;
+    bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    color: var(--blanc);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* QUICK INTRO CARDS */
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+}
+.quick-card {
+    background: var(--blanc);
+    padding: 40px 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.4s var(--trans);
+    border-bottom: 4px solid transparent;
+}
+.quick-card:hover { transform: translateY(-10px); border-bottom-color: var(--terre); }
+.quick-icon {
+    width: 60px; height: 60px;
+    border-radius: 18px;
+    background: rgba(193,68,14,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 22px;
+}
+.quick-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
+.quick-card p { color: var(--gris); font-size: 0.98rem; }
+
+/* ABOUT */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+.about-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+.about-images img {
+    border-radius: var(--radius);
+    height: 260px;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+}
+.about-images img:first-child { margin-top: 40px; border-radius: var(--radius) var(--radius) 60px var(--radius); }
+.about-images img:last-child { border-radius: var(--radius) var(--radius) var(--radius) 60px; }
+
+.about-text .section-title { margin-bottom: 24px; }
+.about-block { margin-bottom: 26px; }
+.about-block h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px;
+}
+.about-block h3::before {
+    content: '';
+    width: 24px; height: 3px;
+    background: var(--terre);
+    border-radius: 3px;
+}
+.about-block p { color: var(--gris); }
+
+/* ACTIONS */
+.actions {
+    background:
+        linear-gradient(rgba(26,34,56,0.03), rgba(26,34,56,0.03));
+}
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 30px;
+}
+.action-card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s var(--trans);
+}
+.action-card:hover { transform: translateY(-10px); }
+.action-card:hover .action-img img { transform: scale(1.1); }
+.action-img { height: 220px; overflow: hidden; position: relative; }
+.action-img img { height: 100%; width: 100%; object-fit: cover; transition: transform 0.7s var(--trans); }
+.action-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: var(--blanc);
+    color: var(--terre);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.action-body { padding: 28px; }
+.action-body h3 { font-size: 1.35rem; margin-bottom: 12px; }
+.action-body p { color: var(--gris); font-size: 0.96rem; margin-bottom: 20px; }
+.action-link {
+    color: var(--terre);
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: system-ui, sans-serif;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: gap 0.3s;
+}
+.action-link:hover { gap: 12px; }
+
+/* PROJECTS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+}
+.project-card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 460px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+.project-card img {
+    height: 100%; width: 100%; object-fit: cover;
+    transition: transform 0.8s var(--trans);
+}
+.project-card:hover img { transform: scale(1.08); }
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,34,56,0.95) 5%, rgba(26,34,56,0.3) 50%, transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 32px;
+    color: var(--blanc);
+}
+.project-place {
+    font-size: 0.8rem;
+    color: var(--ocre);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.project-overlay h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.project-desc {
+    font-size: 0.95rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s var(--trans);
+}
+.project-card:hover .project-desc { opacity: 0.9; max-height: 200px; margin-bottom: 14px; }
+.project-result {
+    display: inline-block;
+    background: rgba(233,180,76,0.2);
+    border: 1px solid var(--ocre);
+    color: var(--ocre);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+/* IMPACT */
+.impact {
+    background: var(--nuit);
+    color: var(--blanc);
+    position: relative;
+    overflow: hidden;
+}
+.impact::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(193,68,14,0.4), transparent 70%);
+    border-radius: 50%;
+}
+.impact::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(42,157,143,0.35), transparent 70%);
+    border-radius: 50%;
+}
+.impact .section-title, .impact .section-tag { color: var(--blanc); position: relative; }
+.impact .section-tag { background: rgba(255,255,255,0.1); color: var(--ocre); }
+.impact .section-subtitle { color: rgba(255,255,255,0.7); }
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    position: relative;
+    margin-top: 30px;
+}
+.impact-item { text-align: center; }
+.impact-num {
+    font-family: 'Georgia', serif;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: var(--ocre);
+    line-height: 1;
+}
+.impact-num span { color: var(--terre-clair); }
+.impact-label {
+    margin-top: 12px;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+}
+
+/* TESTIMONIALS */
+.testimonials { background: var(--blanc); }
+.testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+.testi-card {
+    background: var(--sable);
+    padding: 40px 34px;
+    border-radius: var(--radius);
+    position: relative;
+    transition: transform 0.4s var(--trans);
+}
+.testi-card:hover { transform: translateY(-8px); }
+.testi-card .quote {
+    font-family: 'Georgia', serif;
+    font-size: 4rem;
+    color: var(--terre);
+    opacity: 0.2;
+    line-height: 0.5;
+    position: absolute;
+    top: 30px; left: 26px;
+}
+.testi-text {
+    font-style: italic;
+    color: var(--nuit);
+    margin: 30px 0 26px;
+    position: relative;
+    z-index: 1;
+}
+.testi-author { display: flex; align-items: center; gap: 16px; }
+.testi-author img {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--ocre);
+}
+.testi-name { font-weight: 700; font-family: system-ui, sans-serif; }
+.testi-place { font-size: 0.85rem; color: var(--gris); }
+
+/* NEWS */
+.news { background: var(--sable); }
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+.news-card {
+    background: var(--blanc);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s var(--trans);
+}
+.news-card:hover { transform: translateY(-8px); }
+.news-card:hover .news-img img { transform: scale(1.08); }
+.news-img { height: 200px; overflow: hidden; }
+.news-img img { height: 100%; width: 100%; object-fit: cover; transition: transform 0.6s var(--trans); }
+.news-body { padding: 26px; }
+.news-meta {
+    display: flex; gap: 14px; align-items: center;
+    font-size: 0.82rem; color: var(--gris);
+    margin-bottom: 12px;
+    font-family: system-ui, sans-serif;
+}
+.news-cat {
+    background: rgba(42,157,143,0.12);
+    color: var(--vert);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-weight: 700;
+}
+.news-body h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.news-body p { color: var(--gris); font-size: 0.94rem; }
+
+/* PARTNERS */
+.partners { background: var(--blanc); }
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    align-items: center;
+}
+.partner-logo {
+    background: var(--sable);
+    height: 110px;
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--gris);
+    transition: all 0.4s;
+    text-align: center;
+    padding: 0 16px;
+}
+.partner-logo:hover { color: var(--terre); background: rgba(193,68,14,0.06); transform: translateY(-5px); }
+
+/* CONTACT */
+.contact { background: var(--sable); }
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+}
+.contact-info h3 { font-size: 1.6rem; margin-bottom: 24px; }
+.contact-line {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 24px;
+}
+.contact-line .ci {
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: 14px;
+    background: rgba(193,68,14,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+}
+.contact-line strong { display: block; margin-bottom: 2px; }
+.contact-line span { color: var(--gris); }
+.socials { display: flex; gap: 14px; margin-top: 30px; }
+.socials a {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--nuit);
+    color: var(--blanc);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+.socials a:hover { background: var(--terre); transform: translateY(-4px); }
+
+.contact-form {
+    background: var(--blanc);
+    padding: 44px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-group { margin-bottom: 20px; }
+.form-group label {
+    display: block; font-size: 0.85rem; font-weight: 600;
+    margin-bottom: 8px; font-family: system-ui, sans-serif;
+}
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #eee;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+    background: var(--sable);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--terre);
+    background: var(--blanc);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+/* FOOTER */
+footer {
+    background: var(--nuit);
+    color: rgba(255,255,255,0.7);
+    padding: 70px 0 30px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.footer-brand .logo { color: var(--blanc); margin-bottom: 18px; }
+.footer-brand p { font-size: 0.95rem; max-width: 300px; }
+footer h4 { color: var(--blanc); margin-bottom: 20px; font-size: 1.1rem; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 12px; }
+footer ul a { font-size: 0.94rem; transition: color 0.3s; }
+footer ul a:hover { color: var(--ocre); }
+.footer-newsletter input {
+    width: 100%; padding: 12px 16px; border: none; border-radius: 12px;
+    background: rgba(255,255,255,0.1); color: var(--blanc); margin-bottom: 12px;
+}
+.footer-newsletter input::placeholder { color: rgba(255,255,255,0.5); }
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 26px;
+    text-align: center;
+    font-size: 0.88rem;
+}
+
+/* CTA BANNER */
+.cta-banner {
+    background: linear-gradient(120deg, var(--terre), var(--terre-clair));
+    color: var(--blanc);
+    text-align: center;
+    border-radius: 40px;
+    padding: 70px 40px;
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+    overflow: hidden;
+}
+.cta-banner h2 { font-size: clamp(2rem,4vw,2.8rem); margin-bottom: 16px; }
+.cta-banner p { max-width: 560px; margin: 0 auto 30px; opacity: 0.95; }
+
+/* ANIMATIONS */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s var(--trans);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .about-images img:first-child { margin-top: 0; }
+    .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%; max-width: 320px;
+        height: 100vh;
+        background: var(--nuit);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.4s var(--trans);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+    }
+    .nav-links.open { right: 0; }
+    .nav-links a { color: var(--blanc) !important; font-size: 1.15rem; }
+    .burger { display: flex; }
+    header.scrolled .burger span { background: var(--nuit); }
+    .nav-links.open ~ .burger span { background: var(--blanc); }
+}
+@media (max-width: 560px) {
+    section { padding: 70px 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; }
+    .hero-buttons .btn { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+    <div class="container">
+        <nav>
+            <!-- <a href="#accueil" class="logo"><span class="logo-dot"></span>ÔHôYôFOU</a>-->
+             <a href="#accueil" class="logo"> <span> <img src="img/ChatGPT Image 10 sept. 2026 à 18_43_34.png" alt="LOGO " width="120"></span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#actions">Nos actions</a></li>
+                <li><a href="#projets">Nos projets</a></li>
+                <li><a href="#impact">Notre impact</a></li>
+                <li><a href="#actualites">Actualités</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#soutenir" class="btn btn-primary nav-cta">Nous soutenir</a></li>
+            </ul>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+    <div class="container">
+        <div class="hero-content">
+            <h1>ÔHôYôFOU</h1>
+            <p class="tagline">Ensemble, construisons un avenir meilleur.</p>
+            <p>Nous sommes une ONG portée par l'humain, aux côtés des communautés pour bâtir un avenir digne, solidaire et durable. Chaque geste compte, chaque histoire mérite d'être écrite.</p>
+            <div class="hero-buttons">
+                <a href="#apropos" class="btn btn-primary">Découvrir notre mission →</a>
+                <a href="#actions" class="btn btn-light">Voir nos actions</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll">Défiler ↓</div>
+</section>
+
+<!-- QUICK INTRO -->
+<section id="intro">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Bienvenue chez ÖHöYöFOU</span>
+            <h2 class="section-title">Une ONG au service de l'humain</h2>
+            <p class="section-subtitle">Nous croyons en un monde plus juste, où chaque personne a la possibilité de s'épanouir. Voici ce qui nous anime au quotidien.</p>
+        </div>
+        <div class="quick-grid">
+            <div class="quick-card reveal">
+                <div class="quick-icon">🤝</div>
+                <h3>Qui sommes-nous ?</h3>
+                <p>Une équipe engagée de bénévoles et de professionnels réunis autour d'une même conviction : l'humanité avant tout.</p>
+            </div>
+            <div class="quick-card reveal">
+                <div class="quick-icon">🎯</div>
+                <h3>Nos objectifs </h3>
+                <p>* Promouvoir le bien-être et l’épanouissement des femmes et des enfants ;
+* Défendre et promouvoir les droits des femmes et des enfants ;
+* Prévenir et lutter contre toutes les formes de violences, d’abus et d’exploitation à l’égard des femmes et des enfants ;
+* Protéger et accompagner les personnes vulnérables, notamment les femmes et les enfants victimes de violences ou de maltraitance ;</p>
+            </div>
+            <div class="quick-card reveal">
+                <div class="quick-icon">💛</div>
+                <h3>Nos valeurs</h3>
+                <p>* Solidarité : être présents aux côtés de ceux qui en ont besoin.
+* Respect : préserver la dignité et les droits de chaque personne.
+* Transparence : agir avec intégrité et responsabilité.
+* Proximité : rester à l’écoute des communautés et de leurs réalités.
+* Engagement : transformer nos convictions en actions concrètes sur le terrain.</p>
+            </div>
+            <div class="quick-card reveal">
+                <div class="quick-icon">🌍</div>
+                <h3>Notre impact</h3>
+                <p>    Accompagner les personnes et familles vulnérables ;
+* Sensibiliser les communautés aux droits et à la protection des femmes et des enfants ;
+* Mettre en place des projets sociaux, éducatifs et sanitaires ;
+* Favoriser l’autonomisation et l’inclusion ;
+* Redonner espoir, dignité et sourire à ceux qui en ont le plus besoin.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="apropos" style="background:var(--blanc);">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-images reveal">
+                <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80" alt="Communauté accompagnée">
+                <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80" alt="Enfants souriants">
+            </div>
+            <div class="about-text reveal">
+                <span class="section-tag">À propos de nous</span>
+                <h2 class="section-title">Notre histoire</h2>
+                <div class="about-block">
+                    <p>Née de la volonté de quelques passionnés déterminés à faire la différence, ÖHöYöFOU a vu le jour pour répondre à un constat simple : trop de communautés restent privées de l'essentiel. Depuis, nous œuvrons main dans la main avec les populations, dans le respect de leur culture et de leur dignité.</p>
+                </div>
+                <div class="about-block">
+                    <h3>Notre mission</h3>
+                    <p>Offrir des solutions concrètes et durables aux défis sociaux, en plaçant les communautés au cœur de chaque décision et de chaque projet.</p>
+                </div>
+                <div class="about-block">
+                    <h3>Notre vision</h3>
+                    <p>Un monde où chaque personne, quelle que soit son origine, dispose des moyens de construire son propre avenir avec fierté et espoir.</p>
+                </div>
+                
+                <a href="#projets" class="btn btn-outline">Découvrir nos projets</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ACTIONS -->
+<section class="actions" id="actions">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Nos actions</span>
+            <h2 class="section-title">Nos domaines d'intervention</h2>
+            <p class="section-subtitle">Nous agissons sur plusieurs fronts complémentaires pour créer un changement profond et durable.</p>
+        </div>
+        <div class="actions-grid">
+            <div class="action-card reveal">
+                <div class="action-img"><span class="action-badge">Éducation</span><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Éducation"></div>
+                <div class="action-body"><h3>Éducation</h3><p>Construire des écoles, former des enseignants et donner à chaque enfant l'accès au savoir.</p><a href="#" class="action-link">En savoir plus →</a></div>
+            </div>
+            <div class="action-card reveal">
+                <div class="action-img"><span class="action-badge">Santé</span><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80" alt="Santé"></div>
+                <div class="action-body"><h3>Santé</h3><p>Améliorer l'accès aux soins, aux campagnes de prévention et à l'eau potable.</p><a href="#" class="action-link">En savoir plus →</a></div>
+            </div>
+            <div class="action-card reveal">
+                <div class="action-img"><span class="action-badge">Environnement</span><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80" alt="Environnement"></div>
+                <div class="action-body"><h3>Environnement</h3><p>Reboisement, agriculture durable et sensibilisation à la préservation des ressources.</p><a href="#" class="action-link">En savoir plus →</a></div>
+            </div>
+            <div class="action-card reveal">
+                <div class="action-img"><span class="action-badge">Développement</span><img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=600&q=80" alt="Développement communautaire"></div>
+                <div class="action-body"><h3>Développement communautaire</h3><p>Soutenir les initiatives locales et l'autonomie économique des villages.</p><a href="#" class="action-link">En savoir plus →</a></div>
+            </div>
+            <div class="action-card reveal">
+                <div class="action-img"><span class="action-badge">Jeunesse</span><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="Jeunesse"></div>
+                <div class="action-body"><h3>Jeunesse</h3><p>Former, encadrer et inspirer les jeunes générations à devenir acteurs du changement.</p><a href="#" class="action-link">En savoir plus →</a></div>
+            </div>
+            <div class="action-card reveal">
+                <div class="action-img"><span class="action-badge">Solidarité</span><img src="https://images.unsplash.com/photo-1593113630400-ea4288922497?w=600&q=80" alt="Solidarité"></div>
+                <div class="action-body"><h3>Solidarité</h3><p>Aide d'urgence, distribution de vivres et accompagnement des plus vulnérables.</p><a href="#" class="action-link">En savoir plus →</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projets" style="background:var(--blanc);">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Nos projets</span>
+            <h2 class="section-title">Des réalisations concrètes</h2>
+            <p class="section-subtitle">Derrière chaque projet, des visages, des espoirs et des vies transformées. Découvrez notre travail sur le terrain.</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <img src="img/cd1d25c178ea1ec4d66316eb630f4ed2.jpg" alt="École de l'espoir">
+                <div class="project-overlay">
+                    <span class="project-place">📍 Région Guemon, duekoue, pinhou, cite, dibadougou, binao, sabarikro </span>
+                    <h3>🎄 Arbre de Noël des enfants 🎁</h3>
+                    <p class="project-desc">Une journée de joie, de partage et de solidarité dédiée aux enfants des villages. Au programme : jeux, animations, goûter et distribution de cadeaux pour leur offrir un moment inoubliable et faire vivre la magie de Noël. ❤️</p>
+                    <span class="project-result">✔ . 👧🏽 500 enfants bénéficiaires — 🎁 Des dons et des cadeaux</span>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <img src="https://images.unsplash.com/photo-1541802645635-11f2286a7482?w=700&q=80" alt="Eau pour tous">
+                <div class="project-overlay">
+                    <span class="project-place">📍 Région Guemon, duekoue - kèlèbanan </span>
+                    <h3>Sensibilisation sur les violences basées sur le genre</h3>
+                    <p class="project-desc">Une activité destinée aux enfants, aux jeunes filles et aux jeunes garçons pour les sensibiliser sur les violences sexuelles, aux comportements à risque, au respect du consentement et à leurs droits, tout en leur donnant les moyens de se protéger, de prévenir les abus et de demander de l’aide en cas de besoin. ❤️🤝🏽</p>
+                    <span class="project-result">✔ 20 familles </span>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&q=80" alt="Forêt d'avenir">
+                <div class="project-overlay">
+                    <span class="project-place">📍 Région Guemon, duekoue</span>
+                    <h3>🩸 Don de sang </h3>
+                    <p class="project-desc">Une activité de sensibilisation et de mobilisation autour du don de sang, visant à encourager la population à donner volontairement son sang afin de contribuer à sauver des vies et à renforcer les réserves de sang disponibles pour les patients dans le besoin. </p>
+                    <span class="project-result">✔50 poches de sang</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Notre impact</span>
+            <h2 class="section-title">Des chiffres qui parlent</h2>
+            <p class="section-subtitle">Chaque nombre représente des vies changées, des sourires retrouvés et un espoir renouvelé.</p>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-item reveal">
+                <div class="impact-num"><span>+</span><span class="count" data-target="12500">0</span></div>
+                <div class="impact-label">Personnes accompagnées</div>
+            </div>
+            <div class="impact-item reveal">
+                <div class="impact-num"><span class="count" data-target="87">0</span></div>
+                <div class="impact-label">Projets réalisés</div>
+            </div>
+            <div class="impact-item reveal">
+                <div class="impact-num"><span class="count" data-target="45">0</span></div>
+                <div class="impact-label">Communautés touchées</div>
+            </div>
+            <div class="impact-item reveal">
+                <div class="impact-num"><span class="count" data-target="320">0</span></div>
+                <div class="impact-label">Bénévoles & partenaires</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="temoignages">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Témoignages</span>
+            <h2 class="section-title">Leurs voix, notre raison d'être</h2>
+            <p class="section-subtitle">Ce sont eux qui racontent le mieux l'histoire de ÖHöYöFOU.</p>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card reveal">
+                <div class="quote">"</div>
+                <p class="testi-text">Grâce à l'école construite par ÖHöYöFOU, mes enfants apprennent enfin à lire et à écrire. Ils ont désormais un avenir devant eux.</p>
+                <div class="testi-author">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80" alt="Aïssata">
+                    <div><div class="testi-name">Aïssata</div><div class="testi-place">Village de Kayes</div></div>
+                </div>
+            </div>
+            <div class="testi-card reveal">
+                <div class="quote">"</div>
+                <p class="testi-text">Le microcrédit m'a permis d'ouvrir mon petit commerce. Aujourd'hui, je subviens seule aux besoins de ma famille. Je suis fière.</p>
+                <div class="testi-author">
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=200&q=80" alt="Fatou">
+                    <div><div class="testi-name">Fatou</div><div class="testi-place">Ségou</div></div>
+                </div>
+            </div>
+            <div class="testi-card reveal">
+                <div class="quote">"</div>
+                <p class="testi-text">Avant, nous marchions des heures pour trouver de l'eau. Le puits a changé notre quotidien et celui de tout le village.</p>
+                <div class="testi-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Ibrahim">
+                    <div><div class="testi-name">Ibrahim</div><div class="testi-place">Vallée du fleuve</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="actualites">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Actualités</span>
+            <h2 class="section-title">Les dernières nouvelles</h2>
+            <p class="section-subtitle">Suivez nos événements, campagnes et nouveaux projets au fil de l'eau.</p>
+        </div>
+        <div class="news-grid">
+            <div class="news-card reveal">
+                <div class="news-img"><img src="https://images.unsplash.com/photo-1560523159-4a9692d222f9?w=600&q=80" alt="Campagne"></div>
+                <div class="news-body">
+                    <div class="news-meta"><span class="news-cat">Campagne</span><span>15 juin 2024</span></div>
+                    <h3>Lancement de la campagne « Un cartable pour tous »</h3>
+                    <p>Aidez-nous à équiper 500 enfants pour la rentrée scolaire dans les zones rurales.</p>
+                </div>
+            </div>
+            <div class="news-card reveal">
+                <div class="news-img"><img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80" alt="Événement"></div>
+                <div class="news-body">
+                    <div class="news-meta"><span class="news-cat">Événement</span><span>2 mai 2024</span></div>
+                    <h3>Retour sur notre gala annuel de solidarité</h3>
+                    <p>Une soirée mémorable qui a permis de récolter des fonds pour nos futurs projets.</p>
+                </div>
+            </div>
+            <div class="news-card reveal">
+                <div class="news-img"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" alt="Nouveau projet"></div>
+                <div class="news-body">
+                    <div class="news-meta"><span class="news-cat">Nouveau projet</span><span>18 avril 2024</span></div>
+                    <h3>Un nouveau centre de santé bientôt ouvert</h3>
+                    <p>Les travaux ont débuté pour offrir des soins de proximité à toute une région.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners" id="partenaires">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Nos partenaires</span>
+            <h2 class="section-title">Ils nous font confiance</h2>
+            <p class="section-subtitle">Ensemble, nous multiplions notre impact grâce à des collaborations solides et durables.</p>
+        </div>
+        <div class="partners-grid">
+            <div class="partner-logo reveal">UNICEF</div>
+            <div class="partner-logo reveal">Croix-Rouge</div>
+            <div class="partner-logo reveal">Fondation Terre</div>
+            <div class="partner-logo reveal">EduPlus</div>
+            <div class="partner-logo reveal">AquaVie</div>
+            <div class="partner-logo reveal">GreenAfrica</div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section id="soutenir">
+    <div class="container">
+        <div class="cta-banner reveal">
+            <h2>Rejoignez notre mouvement</h2>
+            <p>Votre soutien, quel qu'il soit, transforme des vies. Faites un don, devenez bénévole ou parlez de nous autour de vous.</p>
+            <a href="#contact" class="btn btn-light">Faire un don ❤</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="center">
+            <span class="section-tag">Contact</span>
+            <h2 class="section-title">Écrivons l'avenir ensemble</h2>
+            <p class="section-subtitle">Une question, une idée, une envie de participer ? Nous serions ravis d'échanger avec vous.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Nos coordonnées</h3>
+                <div class="contact-line"><div class="ci">📍</div><div><strong>Adresse</strong><span>Avenue de la Solidarité, Bamako, Mali</span></div></div>
+                <div class="contact-line"><div class="ci">✉️</div><div><strong>Email</strong><span>contact@ohoyofou.org</span></div></div>
+                <div class="contact-line"><div class="ci">📞</div><div><strong>Téléphone</strong><span>+223 00 00 00 00</span></div></div>
+                <div class="contact-line"><div class="ci">🕐</div><div><strong>Horaires</strong><span>Lun – Ven : 8h30 – 17h30</span></div></div>
+                <div class="socials">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">in</a>
+                    <a href="#" title="Twitter">X</a>
+                    <a href="#" title="LinkedIn">Li</a>
+                </div>
+            </div>
+            <form class="contact-form reveal" onsubmit="return submitForm(event)">
+                <div class="form-row">
+                    <div class="form-group"><label>Nom complet</label><input type="text" required placeholder="Votre nom"></div>
+                    <div class="form-group"><label>Email</label><input type="email" required placeholder="votre@email.com"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+223 ..."></div>
+                    <div class="form-group"><label>Sujet</label>
+                        <select><option>Faire un don</option><option>Devenir bénévole</option><option>Partenariat</option><option>Autre demande</option></select>
+                    </div>
+                </div>
+                <div class="form-group"><label>Message</label><textarea required placeholder="Votre message..."></textarea></div>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Envoyer le message →</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo"><span class="logo-dot"></span>ÖHöYöFOU</div>
+                <p>Ensemble, construisons un avenir meilleur. Une ONG portée par l'humain, aux côtés des communautés.</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#actions">Nos actions</a></li>
+                    <li><a href="#projets">Nos projets</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Découvrir</h4>
+                <ul>
+                    <li><a href="#impact">Notre impact</a></li>
+                    <li><a href="#actualites">Actualités</a></li>
+                    <li><a href="#partenaires">Partenaires</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p style="margin-bottom:14px;">Recevez nos nouvelles et nos actions.</p>
+                <input type="email" placeholder="Votre email">
+                <button class="btn btn-primary" style="width:100%;justify-content:center;">S'abonner</button>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2024 ÖHöYöFOU — Tous droits réservés. Fait avec ❤ pour les communautés.</div>
+    </div>
+</footer>
+
+<script>
+// Header scroll
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Reveal on scroll
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('visible'), (i % 4) * 100);
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Counter animation
+const counters = document.querySelectorAll('.count');
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = +el.dataset.target;
+            let count = 0;
+            const step = target / 60;
+            const timer = setInterval(() => {
+                count += step;
+                if (count >= target) { count = target; clearInterval(timer); }
+                el.textContent = Math.floor(count).toLocaleString('fr-FR');
+            }, 25);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// Form
+function submitForm(e) {
+    e.preventDefault();
+    alert('Merci pour votre message ! L\'équipe ÖHöYöFOU vous répondra très bientôt. 💛');
+    e.target.reset();
+    return false;
+}
+</script>
+</body>
+</html>
